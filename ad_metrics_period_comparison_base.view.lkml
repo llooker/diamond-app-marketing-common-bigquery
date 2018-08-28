@@ -99,14 +99,9 @@ view: ad_metrics_period_comparison_base {
   dimension: click_rate_both_periods {
     hidden: yes
     type: number
-    # sql:  IF((${fact.clicks} + ${last_fact.clicks}) / NULLIF((${fact.impressions} + ${last_fact.impressions}),0)>1,
-    #         NULL,
-    #        (${fact.clicks} + ${last_fact.clicks}) / NULLIF((${fact.impressions} + ${last_fact.impressions}),0));;
-    expression:
-      if((${fact.clicks} + ${last_fact.clicks}) / if((${fact.impressions} + ${last_fact.impressions})=0,null,${fact.impressions} + ${last_fact.impressions})>1,
-        null,
-        (${fact.clicks} + ${last_fact.clicks}) / if((${fact.impressions} + ${last_fact.impressions})=0,null,${fact.impressions} + ${last_fact.impressions}))
-    ;;
+    sql:  IF((${fact.clicks} + ${last_fact.clicks}) / NULLIF((${fact.impressions} + ${last_fact.impressions}),0)>1,
+            NULL,
+           (${fact.clicks} + ${last_fact.clicks}) / NULLIF((${fact.impressions} + ${last_fact.impressions}),0));;
     group_label: "Period Comparisons"
     value_format_name: percent_1
   }
@@ -144,14 +139,9 @@ view: ad_metrics_period_comparison_base {
   dimension: conversion_rate_both_periods {
     hidden: yes
     type: number
-    #sql:  IF((${fact.conversions} + ${last_fact.conversions}) / NULLIF((${fact.clicks} + ${last_fact.clicks}),0) > 1,
-    #         NULL,
-    #         (${fact.conversions} + ${last_fact.conversions}) / NULLIF((${fact.clicks} + ${last_fact.clicks}),0)) ;;
-    expression:
-      if((${fact.conversions} + ${last_fact.conversions}) / if((${fact.clicks} + ${last_fact.clicks})=0,null,${fact.clicks} + ${last_fact.clicks}) > 1,
-        null,
-        (${fact.conversions} + ${last_fact.conversions}) / if((${fact.clicks} + ${last_fact.clicks})=0,null,${fact.clicks} + ${last_fact.clicks}))
-    ;;
+    sql:  IF((${fact.conversions} + ${last_fact.conversions}) / NULLIF((${fact.clicks} + ${last_fact.clicks}),0) > 1,
+            NULL,
+            (${fact.conversions} + ${last_fact.conversions}) / NULLIF((${fact.clicks} + ${last_fact.clicks}),0)) ;;
     group_label: "Period Comparisons"
     value_format_name: percent_1
   }
