@@ -38,13 +38,7 @@ view: date_base {
     hidden: yes
     type: date
     convert_tz: no
-    sql:
-      {% if _dialect._name == 'redshift' %}
-        DATETRUNC(${date_date}, MONTH)
-      {% else %}
-        DATE_TRUNC(MONTH, ${date_date})
-      {% endif %}
-    ;;
+    sql: DATE_TRUNC(MONTH, ${date_date}) ;;
 #     expression: trunc_months(${date_date});;
   }
 
