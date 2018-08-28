@@ -38,7 +38,7 @@ view: date_base {
     hidden: yes
     type: date
     convert_tz: no
-    sql: DATE_TRUNC(MONTH, ${date_date}) ;;
+    sql: DATE_TRUNC(${date_date}, MONTH) ;;
 #     expression: trunc_months(${date_date});;
   }
 
