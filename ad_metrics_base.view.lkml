@@ -132,7 +132,7 @@ view: ad_metrics_base {
     type: number
     sql: ${total_cost}*1.0 / NULLIF(${total_conversions},0) ;;
     value_format_name: usd
-    drill_fields: [fact.date_date, campaign.name, fact.average_cost_per_conversion]
+    drill_fields: [fact.date_date, campaign.name, fact.total_conversions, fact.total_cost, fact.average_cost_per_conversion]
   }
 
   measure: average_value_per_conversion {
