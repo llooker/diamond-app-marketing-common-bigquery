@@ -278,7 +278,7 @@ view: ad_metrics_parent_comparison_base {
   }
 
   dimension: click_rate_z_score {
-    hidden: no
+    hidden: yes
     type: number
     sql:
     (
@@ -295,7 +295,7 @@ view: ad_metrics_parent_comparison_base {
   }
 
   measure: average_click_rate_z_score {
-    hidden: no
+    hidden: yes
     type: number
     sql:
         (
@@ -356,7 +356,7 @@ view: ad_metrics_parent_comparison_base {
   }
 
   dimension: conversion_rate_z_score {
-    hidden: no
+    hidden: yes
     type: number
     sql:
     (
@@ -373,7 +373,7 @@ view: ad_metrics_parent_comparison_base {
   }
 
   measure: average_conversion_rate_z_score {
-    hidden: no
+    hidden: yes
     type: number
     sql:
         (
