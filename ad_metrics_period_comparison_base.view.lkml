@@ -234,6 +234,38 @@ view: ad_metrics_period_comparison_base {
     value_format_name: percent_1
   }
 
+  measure: impressions_period_percent_change {
+    hidden: yes
+    type: number
+    sql: (${fact.total_impressions} - ${last_fact.total_impressions}) / NULLIF(${last_fact.total_impressions}, 0) ;;
+    group_label: "Period Comparisons"
+    value_format_name: percent_1
+  }
+
+  measure: impressions_period_percent_change_abs {
+    hidden: yes
+    type: number
+    sql: abs(${fact.impressions_period_percent_change}) ;;
+    group_label: "Period Comparisons"
+    value_format_name: percent_1
+  }
+
+  measure: cost_per_impression_period_percent_change {
+    hidden: yes
+    type: number
+    sql: (${fact.average_cost_per_impression} - ${last_fact.average_cost_per_impression}) / NULLIF(${last_fact.average_cost_per_impression}, 0) ;;
+    group_label: "Period Comparisons"
+    value_format_name: percent_1
+  }
+
+  measure: cost_per_impression_period_percent_change_abs {
+    hidden: no
+    type: number
+    sql: abs(${fact.cost_per_impression_period_percent_change}) ;;
+    group_label: "Period Comparisons"
+    value_format_name: percent_1
+  }
+
   measure: clicks_percent_change {
     hidden: yes
     type: number
