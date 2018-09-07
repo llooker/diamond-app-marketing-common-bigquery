@@ -259,7 +259,7 @@ view: ad_metrics_period_comparison_base {
   }
 
   measure: cost_per_impression_period_percent_change_abs {
-    hidden: no
+    hidden: yes
     type: number
     sql: abs(${fact.cost_per_impression_period_percent_change}) ;;
     group_label: "Period Comparisons"
