@@ -46,7 +46,7 @@ view: ad_metrics_period_comparison_base {
     group_label: "Period Comparisons"
     value_format_name: percent_1
   }
-  dimension:  value_per_cost_period_percent_change_abs {
+  dimension: value_per_cost_period_percent_change_abs {
     hidden: yes
     type: number
     sql: abs(${fact.value_per_cost_period_percent_change}) ;;
@@ -205,6 +205,36 @@ view: ad_metrics_period_comparison_base {
     sql: ${fact.total_conversionvalue} - ${last_fact.total_conversionvalue} ;;
     group_label: "Period Comparisons"
   }
+  measure: total_cost_period_delta_abs {
+    hidden: yes
+    type: number
+    sql: abs(${fact.total_cost_period_delta}) ;;
+    group_label: "Period Comparisons"
+  }
+  measure: total_impressions_period_delta_abs {
+    hidden: yes
+    type: number
+    sql: abs(${fact.total_impressions_period_delta}) ;;
+    group_label: "Period Comparisons"
+  }
+  measure: total_clicks_period_delta_abs {
+    hidden: yes
+    type: number
+    sql: abs(${fact.total_clicks_period_delta}) ;;
+    group_label: "Period Comparisons"
+  }
+  measure: total_conversions_period_delta_abs {
+    hidden: yes
+    type: number
+    sql: abs(${fact.total_conversions_period_delta}) ;;
+    group_label: "Period Comparisons"
+  }
+  measure: total_conversionvalue_period_delta_abs {
+    hidden: yes
+    type: number
+    sql: abs(${total_conversionvalue_period_delta}) ;;
+    group_label: "Period Comparisons"
+  }
   measure: average_click_rate_period_percent_change {
     hidden: yes
     type: number
@@ -234,7 +264,7 @@ view: ad_metrics_period_comparison_base {
     value_format_name: percent_1
   }
 
-  measure: impressions_period_percent_change {
+  measure: total_impressions_period_percent_change {
     hidden: yes
     type: number
     sql: (${fact.total_impressions} - ${last_fact.total_impressions}) / NULLIF(${last_fact.total_impressions}, 0) ;;
@@ -242,15 +272,15 @@ view: ad_metrics_period_comparison_base {
     value_format_name: percent_1
   }
 
-  measure: impressions_period_percent_change_abs {
+  measure: total_impressions_period_percent_change_abs {
     hidden: yes
     type: number
-    sql: abs(${fact.impressions_period_percent_change}) ;;
+    sql: abs(${fact.total_impressions_period_percent_change}) ;;
     group_label: "Period Comparisons"
     value_format_name: percent_1
   }
 
-  measure: cost_per_impression_period_percent_change {
+  measure: average_cost_per_impression_period_percent_change {
     hidden: yes
     type: number
     sql: (${fact.average_cost_per_impression} - ${last_fact.average_cost_per_impression}) / NULLIF(${last_fact.average_cost_per_impression}, 0) ;;
@@ -258,25 +288,25 @@ view: ad_metrics_period_comparison_base {
     value_format_name: percent_1
   }
 
-  measure: cost_per_impression_period_percent_change_abs {
+  measure: average_cost_per_impression_period_percent_change_abs {
     hidden: yes
     type: number
-    sql: abs(${fact.cost_per_impression_period_percent_change}) ;;
+    sql: abs(${fact.average_cost_per_impression_period_percent_change}) ;;
     group_label: "Period Comparisons"
     value_format_name: percent_1
   }
 
-  measure: clicks_percent_change {
+  measure: total_clicks_period_percent_change {
     hidden: yes
     type: number
     sql: (${fact.total_clicks} - ${last_fact.total_clicks}) / NULLIF(${last_fact.total_clicks}, 0) ;;
     group_label: "Period Comparisons"
     value_format_name: percent_1
   }
-  measure: clicks_percent_change_abs {
+  measure: total_clicks_period_percent_change_abs {
     hidden: yes
     type: number
-    sql: abs(${fact.clicks_percent_change}) ;;
+    sql: abs(${fact.total_clicks_period_percent_change}) ;;
     group_label: "Period Comparisons"
     value_format_name: percent_1
   }
@@ -302,7 +332,7 @@ view: ad_metrics_period_comparison_base {
     group_label: "Period Comparisons"
     value_format_name: percent_1
   }
-  measure: average_value_per_cost_percent_change_abs {
+  measure: average_value_per_cost_period_percent_change_abs {
     hidden: yes
     type: number
     sql: abs(${fact.average_value_per_cost_period_percent_change}) ;;

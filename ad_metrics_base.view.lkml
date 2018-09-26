@@ -135,6 +135,15 @@ view: ad_metrics_base {
     drill_fields: [fact.date_date, campaign.name, fact.total_conversions, fact.total_cost, fact.average_cost_per_conversion]
   }
 
+  measure: average_cost_per_value {
+    label: "Cost per value"
+    description: "Cost per value."
+    type: number
+    sql: ${total_cost}*1.0 / NULLIF(${total_conversionvalue},0) ;;
+    value_format_name: usd
+    drill_fields: [fact.date_date, campaign.name, fact.total_conversionvalue, fact.total_cost, fact.average_cost_per_conversion]
+  }
+
   measure: average_value_per_conversion {
     label: "Value per Conversion"
     description: "Average value per conversion."
@@ -204,7 +213,7 @@ view: ad_metrics_base {
   measure: cumulative_conversions {
     type: running_total
     sql: ${total_conversions} ;;
-    drill_fields: [fact.date_date, campaign.name, fact.total_cost]
+    drill_fields: [fact.date_date, campaign.name, fact.total_conversions]
     value_format_name: decimal_0
     direction: "column"
   }
