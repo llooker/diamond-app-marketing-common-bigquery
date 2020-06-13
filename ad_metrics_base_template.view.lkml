@@ -10,13 +10,13 @@ view: ad_metrics_dimension_base {
   dimension: conversions {
     hidden: yes
     type: number
-    sql: ${TABLE}.conversions ;;
+    sql: CAST (${TABLE}.conversions as NUMERIC) ;;
   }
 
   dimension: conversionvalue {
     hidden: yes
     type: number
-    sql: ${TABLE}.conversionvalue ;;
+    sql: CAST (${TABLE}.conversionvalue as NUMERIC) ;;
   }
 
   dimension: cost {
